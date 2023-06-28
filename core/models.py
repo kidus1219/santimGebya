@@ -1,8 +1,6 @@
 from django.db import models
 
 
-
-
 class Store(models.Model):
     ownerId = models.CharField(max_length=64)
     name = models.CharField(max_length=15)

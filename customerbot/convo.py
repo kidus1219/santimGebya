@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from telegram import Update
 from telegram.ext import ConversationHandler, ContextTypes, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 """
-from customer.models import CustomerUser
+from core.models import CustomerUser
 from store.models import Store
 from . import template
 from .utils import BotPost
@@ -100,7 +100,7 @@ async def store_list(update: Update, _: ContextTypes.DEFAULT_TYPE):
     opened_symbol = "🟩"
     closed_symbol = "🟥"
     async for x in Store.objects.all().order_by('suid'):
-        row.append([f"{opened_symbol if x.is_open else closed_symbol} {x.name}", "webapp", f"{MAIN_HOST}/customer/{update.effective_chat.id}/store/{x.suid}/"])
+        row.append([f"{opened_symbol if x.is_open else closed_symbol} {x.name}", "webapp", f"{MAIN_HOST}/core/{update.effective_chat.id}/store/{x.suid}/"])
         i += 1
         if i == 2:
             keyboard.append(row)

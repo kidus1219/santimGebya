@@ -1,14 +1,14 @@
 from .const import P_H, MAIN_HOST
 GATE = {
     'text': """
-This is customer gate
+This is core gate
 """,
     'keyboard_type': "reply",
     'keyboard': [
         [["Register", "contact"]],
         [["Help"], ["About"]],
     ],
-    'menu_button': ["Login", f'{MAIN_HOST}/customer/{P_H}/login/'],
+    'menu_button': ["Login", f'{MAIN_HOST}/core/{P_H}/login/'],
     'state': 0
 }
 
@@ -41,9 +41,9 @@ This is home
     'keyboard_type': "reply",
     'keyboard': [
         [["Stores"]],
-        [["Profile", "webapp", f"{MAIN_HOST}/customer/{P_H}/profile/"], ["My Orders", "webapp", f"{MAIN_HOST}/customer/{P_H}/orders/"]],
+        [["Profile", "webapp", f"{MAIN_HOST}/core/{P_H}/profile/"], ["My Orders", "webapp", f"{MAIN_HOST}/core/{P_H}/orders/"]],
         [["Help"], ["About"]],
-        [["Logout", "webapp", f"{MAIN_HOST}/customer/{P_H}/logout/"]],
+        [["Logout", "webapp", f"{MAIN_HOST}/core/{P_H}/logout/"]],
     ],
     'state': 1
 }
