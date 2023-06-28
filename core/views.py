@@ -9,7 +9,7 @@ def store_profile(request):
         'name': 'Shemsu',
         'location': 'merkato aroge tera',
     }
-    return Response(data)
+    return render(request, template_name='core/login.html', context={'DATA': data})
 
 
 @api_view()
@@ -24,4 +24,4 @@ def leaderboard(request):
 
 @api_view()
 def customer_pay(request):
-    return Response('customer pay')
+    return Response('core pay')
