@@ -1,11 +1,11 @@
 import React from "react";
 import CustomBtn from "./ CustomBtn";
 
-const InputComponent = ({type,placeholder, min}) => {
+const InputComponent = ({width,type,placeholder, min, name, value, onchange}) => {
   return (
-    <div className="w-1/4 h-1/8 justify-center content-center align-middle py-1 flex items-center flex-row  ">
+    <div className={`${width} h-1/8 justify-center self-center content-center align-middle py-1 flex items-center flex-row  `}>
 
-        <input className="w-full mx-1" type={type} placeholder={placeholder} min={min}/>
+        <input className="w-full mx-1 self-center" name={name} value={value} onChange={onchange} type={type} placeholder={placeholder} min={min} required/>
 
     </div>
   );

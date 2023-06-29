@@ -23,5 +23,4 @@ def post_worker_init(worker):
     # from customerbot.main import CustomerBotApplication
     from storebot.main import StoreBotApplication
     # loop.run_until_complete(CustomerBotApplication().run())
-    # loop.run_until_complete(StoreBotApplication().run())
-#
+    loop.run_until_complete(StoreBotApplication().run())

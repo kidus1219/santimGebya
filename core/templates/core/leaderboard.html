@@ -19,6 +19,7 @@
     {% csrf_token %} {{ DATA|json_script:'DATA_DIV' }}
     <script>
       const DATA = JSON.parse(document.getElementById("DATA_DIV").textContent);
+      console.log(DATA)
       DATA.fetchHeaders = {
         "Accept": "application/json",
         "Content-Type": "application/json",

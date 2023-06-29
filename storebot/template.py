@@ -16,7 +16,7 @@ This is home
 """,
     'keyboard_type': "reply",
     'keyboard': [
-        [["Profile", "webapp", f"{MAIN_HOST}/store/profile/{P_H}/"], ["Cashier", "webapp", f"{MAIN_HOST}/store/cashier/{P_H}/"]],
+        [["Profile", "webapp", f"{MAIN_HOST}/profile/"], ["Cashier", "webapp", f"{MAIN_HOST}/cashier/"]],
         [["Help"], ["About"]],
     ],
     'state': 1

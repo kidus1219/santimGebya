@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Store, Item
-from .serializers import ItemSerializer
+from .serializers import ItemSerializer, ItemLeaderboardSerializer
 
 @api_view()
 def store_profile(request):
@@ -19,6 +19,7 @@ def store_profile(request):
 def store_cashier(request):
     items = Item.objects.all()
     data = {
+        'qrApi': "http://localhost:8000/generate-qr/",
         'items': ItemSerializer(items, many=True).data
     }
     print(data)
@@ -29,12 +30,13 @@ def store_cashier(request):
 def leaderboard(request):
     items = Item.objects.all()
     data = {
-        'items': ItemSerializer(items, many=True).data
+        'items': ItemLeaderboardSerializer(items, many=True).data
     }
     print(data)
     return render(request, template_name='core/leaderboard.html', context={'DATA': data})
 
 
-@api_view()
-def customer_pay(request):
+@api_view(['POST'])
+def generate_qr(request):
+    print('hi')
     return Response('core pay')
