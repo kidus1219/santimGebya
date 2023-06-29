@@ -8,7 +8,7 @@ This is core gate
         [["Register", "contact"]],
         [["Help"], ["About"]],
     ],
-    'menu_button': ["Login", f'{MAIN_HOST}/core/{P_H}/login/'],
+    'menu_button': ["Profile", f'{MAIN_HOST}/core/{P_H}/login/'],
     'state': 0
 }
 

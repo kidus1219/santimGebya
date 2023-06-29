@@ -1,0 +1,67 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<!--    <meta-->
+<!--      http-equiv="Cache-Control"-->
+<!--      content="no-cache, no-store, must-revalidate"-->
+<!--    />-->
+<!--    <meta http-equiv="Pragma" content="no-cache" />-->
+<!--    <meta http-equiv="Expires" content="0" />-->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cashier</title>
+    <script src="{% static 'core/js/telegram-web-app.js' %}"></script>
+    <!--    <script src="https://telegram.org/js/telegram-web-app.js"></script>-->
+  </head>
+  <body>
+    <div id="root"></div>
+    {% csrf_token %} {{ DATA|json_script:'DATA_DIV' }}
+    <script>
+      const DATA = JSON.parse(document.getElementById("DATA_DIV").textContent);
+      DATA.fetchHeaders = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": document.getElementsByName('csrfmiddlewaretoken')[0].value
+      };
+      const {
+        setBackgroundColor,
+        MainButton,
+        BackButton,
+        showAlert,
+        enableClosingConfirmation,
+        ready,
+        expand,
+        openTelegramLink,
+      } = window.Telegram.WebApp;
+
+      setBackgroundColor("#0E225A");
+      enableClosingConfirmation();
+      window.alert = (text) => showAlert(text);
+      DATA.goToTg = openTelegramLink
+      DATA.backButton = BackButton.onClick(() => history.back());
+      DATA.mainButton = MainButton.setParams({
+        color: "#0E225A",
+        is_visible: true,
+      });
+      const mainButtonShowProgress = DATA.mainButton.showProgress;
+      DATA.mainButton.showProgress = () => {
+        if (!DATA.mainButton.isProgressVisible) {
+          DATA.mainButton.originalText = DATA.mainButton.text
+          DATA.mainButton.setText(DATA.mainButton.originalText + " . . .");
+          mainButtonShowProgress()
+        }
+      };
+      const mainButtonHideProgress = DATA.mainButton.hideProgress;
+      DATA.mainButton.hideProgress = () => {
+        if (DATA.mainButton.isProgressVisible) {
+          DATA.mainButton.setText(DATA.mainButton.originalText);
+          mainButtonHideProgress();
+        }
+      };
+      DATA.initData = window.Telegram.WebApp.initData;
+      expand();
+    </script>
+    <script src="{% static 'core/js/leaderboard.js' %}"></script>
+  </body>
+</html>

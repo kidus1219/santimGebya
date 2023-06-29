@@ -6,7 +6,7 @@ from core.models import Store
 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    astore = Store.objects.filter(ownerId=update.effective_chat.id)
+    astore = 1 #Store.objects.filter(ownerId=update.effective_chat.id)
     print(astore)
     if astore:
         return await BotPost(template.HOME, var_key=[[update.effective_user.id], [update.effective_user.id]]).printer(update.effective_chat.id)

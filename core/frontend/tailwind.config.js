@@ -15,8 +15,8 @@ module.exports = {
         green: "#004c4c",
         red: "#f00",
         gold: "#FFD700",
-
-        secondary2: "#939393",
+        button:"#d97706",
+        secondary2: "#f8fafc",
         inactiveBtn: "#0C152D", // make the opacity only 47%
 
         // secondary: "#E3E3E3",

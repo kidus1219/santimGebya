@@ -2,10 +2,10 @@ const { join } = require("path");
 
 module.exports = {
   entry: {
-    login: join(__dirname, "src", "login.js"),
-    // profile: join(__dirname, "src", "profile.js"),
-    // store: join(__dirname, "src", "store.js"),
-    // orders: join(__dirname, "src", "orders.js"),
+    // login: join(__dirname, "src", "login.js"),
+    profile: join(__dirname, "src", "profile.js"),
+    cashier: join(__dirname, "src", "cashier.js"),
+    leaderboard: join(__dirname, "src", "leaderboard.js"),
   },
   output: {
     filename: "[name].js", //do hasch chaching here somehting like [hash][ext]

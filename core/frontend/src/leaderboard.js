@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Login from "./pages/Login"
 import "./index.css"
+import Leaderboard from "./pages/Leaderboard";
 const App = () => {
-  return  <Login />
+  return  <Leaderboard />
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <App />
 );
-
-//<React.StrictMode> // this makes it run twice aghhh

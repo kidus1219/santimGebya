@@ -20,8 +20,8 @@ def post_fork(server, worker):
 def post_worker_init(worker):
     print('---------- POST WORKER INIT -----------------')  # , txAll())
     loop = asyncio.get_event_loop()
-    from customerbot.main import CustomerBotApplication
+    # from customerbot.main import CustomerBotApplication
     from storebot.main import StoreBotApplication
-    loop.run_until_complete(CustomerBotApplication().run())
+    # loop.run_until_complete(CustomerBotApplication().run())
     # loop.run_until_complete(StoreBotApplication().run())
 #

@@ -1,25 +1,38 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from .models import Store, Item
+from .serializers import ItemSerializer
 
 @api_view()
 def store_profile(request):
+    items = Item.objects.all()
     data = {
         'name': 'Shemsu',
         'location': 'merkato aroge tera',
     }
-    return render(request, template_name='core/login.html', context={'DATA': data})
+    print(data)
+    return render(request, template_name='core/profile.html', context={'DATA': data})
 
 
 @api_view()
 def store_cashier(request):
-    return Response('cashier')
+    items = Item.objects.all()
+    data = {
+        'items': ItemSerializer(items, many=True).data
+    }
+    print(data)
+    return render(request, template_name='core/cashier.html', context={'DATA': data})
 
 
 @api_view()
 def leaderboard(request):
-    return Response('leaderboard')
+    items = Item.objects.all()
+    data = {
+        'items': ItemSerializer(items, many=True).data
+    }
+    print(data)
+    return render(request, template_name='core/leaderboard.html', context={'DATA': data})
 
 
 @api_view()

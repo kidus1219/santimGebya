@@ -10,7 +10,7 @@
 <!--    <meta http-equiv="Expires" content="0" />-->
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Cashier</title>
     <script src="{% static 'core/js/telegram-web-app.js' %}"></script>
     <!--    <script src="https://telegram.org/js/telegram-web-app.js"></script>-->
   </head>
@@ -19,6 +19,7 @@
     {% csrf_token %} {{ DATA|json_script:'DATA_DIV' }}
     <script>
       const DATA = JSON.parse(document.getElementById("DATA_DIV").textContent);
+      console.log(DATA)
       DATA.fetchHeaders = {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -62,6 +63,6 @@
       DATA.initData = window.Telegram.WebApp.initData;
       expand();
     </script>
-    <script src="{% static 'core/js/login.js' %}"></script>
+    <script src="{% static 'core/js/cashier.js' %}"></script>
   </body>
 </html>
