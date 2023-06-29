@@ -3,5 +3,5 @@
 BOT_TOKEN = '6157752399:AAFYA2LtIxTzxbfLc5XP180cm20S05k80Iw'
 BOT_LINK = 'santim'
 # MAIN_HOST = "https://82.223.196.115"
-MAIN_HOST = "https://0ba1-190-2-132-213.ngrok-free.app"
+MAIN_HOST = "https://47ff-190-2-132-213.ngrok-free.app"
 P_H = "]=["

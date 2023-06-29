@@ -3,10 +3,23 @@ import CustomBtn from "./ CustomBtn";
 import ItemsRow from "./ItemsRow";
 import SelectComponent from "./SelectComponent";
 import InputComponent from "./InputComponent";
+import QRCode from 'react-qr-code';
 
 
 
 const CashierBody = () => {
+    function generateQRCode(val) {
+            var qrCodeCanvas = document.getElementById('qrCodeCanvas');
+            qrCodeCanvas.innerHTML = '';
+
+            var qrCode = new QRCode(qrCodeCanvas, {
+                text: inputText,
+                width: 128,
+                height: 128
+            });
+        }
+        const [showingQr, setShowingQr] = useState(false)
+        const [incomming, setIncomming] = useState('')
         const [count,setCount]= useState(0)
         const [rowItems, addRowItems] = useState([<ItemsRow key={0} options={DATA.items}/>]);
 
@@ -16,10 +29,11 @@ const CashierBody = () => {
             {pk:'2', quantity:'',price:''}]
         )
 
-    const addItems = () => {
-        setRry(prevState => [...prevState, {quantity: 0, price: 0}])
-        setFormData([...formData, {pk:'2', quantity:'',price:''}])
-    }
+        const addItems = () => {
+            setRry(prevState => [...prevState, {quantity: 0, price: 0}])
+            setFormData([...formData, {pk:'2', quantity:'',price:''}])
+        }
+
 
         const handleChange= (event,index)=>{
            const updatedFormData=[...formData];
@@ -41,8 +55,10 @@ const CashierBody = () => {
         .then((data) => {
 
           if (data.signal > 0) {
-              alert('hello')
-            alert(data.msg);
+
+                setIncomming(JSON.parse(data.msg).url)
+                setShowingQr(true)
+            // alert(data.msg);
             
           } else {
             alert("Failed: " + data.msg);
@@ -51,6 +67,7 @@ const CashierBody = () => {
         .catch((error) => {
 
           alert("Something went wrong: " + error);
+          console.log(error)
           // maybe alert also the status code
         });
 
@@ -58,7 +75,8 @@ const CashierBody = () => {
         }
   return (
     <div className="w-full h-screen justify-start  align-middle flex flex-col items-center bg-secondary2 ">
-        <form className="w-full h-full flex flex-col gap-4 p-4" onSubmit={handleSubmit}>
+        {showingQr && <QRCode value={incomming} size={628}/>}
+        <form className="w-full h-full flex flex-col gap-4 pt-4 px-2" onSubmit={handleSubmit}>
 
             {rry.map((item, index) => {
                 return (<ItemsRow key={index} index={index} handleChange={handleChange} formData={formData} quantity={item.quantity} price={item.price} options={DATA.items}/>)

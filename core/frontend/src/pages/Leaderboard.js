@@ -4,14 +4,14 @@ const Leaderboard = () => {
     const rry2 = DATA.items
 
   return (
-      <div className="flex flex-col gap-8 p-4 text-center bg-gray-300">
-          <div className="w-full h-1/8 justify-center content-center align-middle py-5 flex items-center flex-row bg-amber-200 ">
-              WELCOME<br/>
-              <span className="size">Here are the top 5 affordable prices on each item</span>
+      <div className="flex flex-col gap-8 text-center bg-secondary2">
+          <div className="w-full h-1/8 justify-center content-center align-middle py-5 flex items-center flex-col bg-amber-200 ">
+              <span className="text-l font-bold">WELCOME</span>
+              <span className="text-xs">Here are the top 5 affordable prices on each item</span>
           </div>
           {rry2.map((item, index) => {
               return (
-                  <div key={index} className="flex flex-col rounded-xl bg-white px-6 py-8">
+                  <div key={index} className="flex flex-col rounded-xl bg-white mx-4 my-2 px-6 py-8">
                       <span className="font-extrabold text-xl text-cyan-500">{item.name}</span>
                       {item.top1 && <div className="flex justify-between font-mono">
                           <span>1</span>
